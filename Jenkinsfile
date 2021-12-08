@@ -6,21 +6,21 @@ pipeline {
     stage('Copy source code from git') {
       steps {
         sh 'mkdir /package_folder'
-        dir('/package_folder') {
+        dir('/tmp/package_folder') {
           git 'https://github.com/efsavage/hello-world-war'
           }
       }
     }
   stage('Build war file') {
     steps {
-      dir ('/package_folder/hello-world-war') {
+      dir ('/tmp/package_folder/hello-world-war') {
         sh 'mvn package'
         }
     }
   }
   stage('Make docker image') {
     steps {
-      dir ('/package_folder/hello-world-war') {
+      dir ('/tmp/package_folder/hello-world-war') {
         git 'https://github.com/dlmurga/ds-11.git'
         sh 'cp ds-11/prod/Dockerfile .'
         sh 'docker build -t ds-11-prod .'
