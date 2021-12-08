@@ -1,10 +1,10 @@
-FROM openjdk:11.0.10-jdk-slim
+FROM ubuntu:20.04
 
 # Install pacakges
 RUN apt update
 
-# Install git, maven
-RUN apt install -y git maven
+# Install git, jdk, maven
+RUN apt install -y git default-jdk maven
 
 # Install docker 18.03
 RUN apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
