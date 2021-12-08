@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Copy source code from git') {
       steps {
-        sh 'mkdir /package_folder'
+        sh 'mkdir /tmp/package_folder'
         dir('/tmp/package_folder') {
           git 'https://github.com/efsavage/hello-world-war'
           }
