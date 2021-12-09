@@ -20,7 +20,7 @@ pipeline {
   }
   stage('Make docker image') {
     steps {
-      sh 'mkdir df_folder'
+      sh 'mkdir -p df_folder'
       dir ('df_folder') {
         git 'https://github.com/dlmurga/ds-11.git'
         sh 'ls -l'
