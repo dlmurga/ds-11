@@ -6,6 +6,7 @@ pipeline {
     }
   }
   tools { maven "m3" }
+
   stages {
     stage('Copy source code from git') {
       steps {
@@ -13,11 +14,13 @@ pipeline {
           sh 'ls -l'
       }
     }
+
   stage('Build war file') {
     steps {
         sh 'mvn package'
     }
   }
+
   stage('Make docker image') {
     steps {
       sh 'mkdir -p df_folder'
@@ -32,6 +35,7 @@ pipeline {
       sh 'docker --config dc_folder/ push dlmurga/ds-11-prod:$version'
     }
   }
+
   stage('Run docker on prod server') {
     steps {
     }
