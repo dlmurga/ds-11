@@ -1,7 +1,8 @@
 pipeline {
   agent {
-    docker { image 'dlmurga/ds-11-build:1.0'}
+    docker { image 'dlmurga/ds-11-build:1.0' }
   }
+  tools { maven "m3" }
   stages {
     stage('Copy source code from git') {
       steps {
