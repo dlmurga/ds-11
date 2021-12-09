@@ -19,6 +19,7 @@ pipeline {
     steps {
       dir ('hello-world-war') {
         git 'https://github.com/dlmurga/ds-11.git'
+        sh 'ls -l'
         sh 'cp ds-11/prod/Dockerfile .'
         sh 'docker build -t ds-11-prod .'
       }
