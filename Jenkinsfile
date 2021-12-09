@@ -26,10 +26,10 @@ pipeline {
         git 'https://github.com/dlmurga/ds-11.git'
         sh 'ls -l'
       }
-      sh 'docker build -t ds-11-prod:$version -f df_folder/prod/Dockerfile .'
-      sh 'docker tag ds-11-prod:$version dlmurga/ds-11-prod:$version'
+      sh 'docker --config dc_folder/  build -t ds-11-prod:$version -f df_folder/prod/Dockerfile .'
+      sh 'docker --config dc_folder/ tag ds-11-prod:$version dlmurga/ds-11-prod:$version'
       sh 'docker --config dc_folder/ login -u $docker_user -p $docker_pass'
-      sh 'docker push dlmurga/ds-11-prod:$version'
+      sh 'docker --config dc_folder/ push dlmurga/ds-11-prod:$version'
     }
   }
   stage('Run docker on prod server') {
