@@ -12,9 +12,7 @@ pipeline {
     }
   stage('Build war file') {
     steps {
-      dir ('hello-world-war') {
         sh 'mvn package'
-      }
     }
   }
   stage('Make docker image') {
