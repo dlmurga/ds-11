@@ -9,6 +9,7 @@ pipeline {
         sh 'mkdir /tmp/package_folder'
         dir('/tmp/package_folder') {
           git 'https://github.com/efsavage/hello-world-war'
+          sh 'ls -l hello-world-war'
           }
       }
     }
