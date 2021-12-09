@@ -34,18 +34,6 @@ pipeline {
   }
   stage('Run docker on prod server') {
     steps {
-      script {
-  	    def remote = [:]
-  	    remote.name = 'prod'
-  	    remote.host = '$ip_address'
-  	    remote.allowAnyHosts = true
-  	    withCredentials([usernamePassword(credentialsId: 'prod_root', passwordVariable: 'password', usernameVariable: 'username')]) {
-   		  remote.user = "${username}"
-   		  remote.password = "${password}"
-  	    }
-  	    sshCommand remote: remote, command: "pwd"
-  	  }
-  	}
-  }
-}
+    }
+
 }
