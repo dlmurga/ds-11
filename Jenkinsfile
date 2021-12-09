@@ -21,9 +21,8 @@ pipeline {
       dir ('df_folder') {
         git 'https://github.com/dlmurga/ds-11.git'
         sh 'ls -l'
-        }
-        sh 'docker build -t ds-11-prod -f df_folder/prod/Dockerfile .'
       }
+      sh 'docker build -t ds-11-prod -f df_folder/prod/Dockerfile .'
       sh 'docker tag ds-11-prod:$version dlmurga/ds-11-prod:$version'
       sh 'docker login -u $docker_user -p $docker_pass'
       sh 'docker push dlmurga/ds-11-prod:$version'
