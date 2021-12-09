@@ -17,11 +17,12 @@ pipeline {
   }
   stage('Make docker image') {
     steps {
-      dir ('hello-world-war') {
+      sh 'mkdir df_folder'
+      dir ('df_folder') {
         git 'https://github.com/dlmurga/ds-11.git'
         sh 'ls -l'
-        sh 'cp ds-11/prod/Dockerfile .'
-        sh 'docker build -t ds-11-prod .'
+        }
+        sh 'docker build -t ds-11-prod -f df_folder/prod/Dockerfile .'
       }
       sh 'docker tag ds-11-prod:$version dlmurga/ds-11-prod:$version'
       sh 'docker login -u $docker_user -p $docker_pass'
