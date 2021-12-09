@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'dlmurga/ds-11-build:1.0' }
+    docker {
+      image 'dlmurga/ds-11-build:1.0'
+      args '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
   }
   tools { maven "m3" }
   stages {
