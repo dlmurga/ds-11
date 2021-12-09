@@ -38,6 +38,7 @@ pipeline {
 
     stage('Run docker on prod server') {
       steps {
+        sh 'echo $ip_address'
       }
     }
   }
