@@ -7,7 +7,7 @@ pipeline {
     stage('Copy source code from git') {
       steps {
           git 'https://github.com/efsavage/hello-world-war'
-          sh 'ls -l hello-world-war'
+          sh 'ls -l'
       }
     }
   stage('Build war file') {
