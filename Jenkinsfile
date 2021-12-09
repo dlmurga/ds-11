@@ -32,7 +32,7 @@ pipeline {
       sh 'docker --config dc_folder/ push dlmurga/ds-11-prod:$version'
     }
   }
-  stage('SSH') {
+  stage('Run docker on prod server') {
     steps {
       script {
   	    def remote = [:]
@@ -44,7 +44,7 @@ pipeline {
    		  remote.password = "${password}"
   	    }
   	    sshCommand remote: remote, command: "pwd"
-      }
-    }
+  	  }
+  	}
   }
 }
