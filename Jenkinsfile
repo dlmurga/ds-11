@@ -32,10 +32,19 @@ pipeline {
       sh 'docker --config dc_folder/ push dlmurga/ds-11-prod:$version'
     }
   }
-  stage('Run docker on prod server') {
+  stage('SSH') {
     steps {
-      sh 'echo docker version'
+      script {
+  	    def remote = [:]
+  	    remote.name = 'prod'
+  	    remote.host = '$ip_address'
+  	    remote.allowAnyHosts = true
+  	    withCredentials([usernamePassword(credentialsId: 'prod_root', passwordVariable: 'password', usernameVariable: 'username')]) {
+   		  remote.user = "${username}"
+   		  remote.password = "${password}"
+  	    }
+  	    sshCommand remote: remote, command: "pwd"
+      }
     }
-  }
   }
 }
