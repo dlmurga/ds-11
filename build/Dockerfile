@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Confugure ssh client
+RUN groupadd -g 120 jenkins && useradd -u 113 -g jenkins jenkins
 COPY id_rsa /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 
