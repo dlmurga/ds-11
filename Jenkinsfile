@@ -3,7 +3,6 @@ pipeline {
     docker {
       image 'dlmurga/ds-11-build:1.0'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
-#      args '-v /etc/passwd:/etc/passwd'
     }
   }
   tools { maven "m3" }
