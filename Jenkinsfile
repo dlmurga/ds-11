@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'dlmurga/ds-11-build:1.0'
+      image 'dlmurga/ds-11-build:1.1'
       args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
