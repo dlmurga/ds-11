@@ -38,9 +38,9 @@ pipeline {
 
     stage('Run docker on prod server') {
       steps {
-        sshagent(credentials : ['prod_key']) {
+        sshagent(credentials : ['prod_jenkins']) {
         sh '''
-        ssh -o StrictHostKeyChecking=no root@$ip_address sudo docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
+        ssh -o StrictHostKeyChecking=no jenkins@$ip_address sudo docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
         '''
         }
       }
