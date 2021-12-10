@@ -39,6 +39,7 @@ pipeline {
     stage('Run docker on prod server') {
       steps {
         sh '''
+        sudo -i
         groupadd -g 120 jenkins
         useradd -u 113 -g 120 jenkins
         ssh -o StrictHostKeyChecking=no jenkins@$ip_address sudo docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
