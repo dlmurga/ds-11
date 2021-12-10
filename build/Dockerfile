@@ -2,6 +2,10 @@ FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Confugure ssh client
+COPY id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+
 # Install pacakges
 RUN apt update
 
