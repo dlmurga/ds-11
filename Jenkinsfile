@@ -40,7 +40,7 @@ pipeline {
       steps {
         sshagent(credentials : ['prod_key']) {
         sh '''
-        ssh -o StrictHostKeyChecking=no root@$ip_address docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
+        ssh -o StrictHostKeyChecking=no root@$ip_address sudo docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
         '''
         }
       }
