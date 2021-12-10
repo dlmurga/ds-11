@@ -38,7 +38,10 @@ pipeline {
 
     stage('Run docker on prod server') {
       steps {
-        sh 'echo $ip_address'
+        sshagent(credentials : ['prod_key']) {
+        sh '''
+        ssh -o StrictHostKeyChecking=no root@$ip_address docker run -d -p 8080:8080 dlmurga/ds-11-prod:$version
+        '''
       }
     }
   }
